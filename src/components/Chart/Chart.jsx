@@ -4,13 +4,13 @@ import s from './Chart.module.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function Chart({ clicks, labels, datasetsData }) {
+export default function Chart({ clicks }) {
  const data = {
-  labels: {clicks},
+  labels: Object.keys(clicks),
   datasets: [
     {
-      label: '# of Votes',
-      data: {clicks},
+      label: ('good', 'neutral', 'bad'),
+      data:  Object.values(clicks),
       backgroundColor: [
         'rgba(253, 60, 101, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -31,7 +31,10 @@ export default function Chart({ clicks, labels, datasetsData }) {
     },
   ],
 };
-data.labels = labels;
-data.datasets[0].data = datasetsData;
-return <Doughnut className={s.chart} data={data} />;
+
+return (
+<div className={s.wrapper}>
+  <Doughnut className={s.chart} data={data} />
+  </div>
+)
 }

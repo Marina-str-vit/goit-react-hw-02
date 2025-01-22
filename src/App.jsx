@@ -60,7 +60,7 @@ export default function App() {
             percentFeedback={positiveFeedback}
           />
         )}
-        <Chart data={clicks}  datasetsData={updateFeedback} />
+        <Chart clicks={clicks}/>
       </div>
     </div>
   );
